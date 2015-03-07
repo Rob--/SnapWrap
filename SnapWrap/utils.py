@@ -8,6 +8,7 @@ def save_snap(snap, dir):
     copy(snap.file.name, dir)
     fn = os.path.basename(snap.file.name)
     os.rename(os.path.join(dir, fn), os.path.join(dir, snap.sender + "_" + snap.snap_id + "." + fn.split(".")[2]))
+    os.remove(snap.file.name)
               
 def file_extension_for_type(media_type):
     if media_type is MEDIA_TYPE_IMAGE:
