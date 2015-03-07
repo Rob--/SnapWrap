@@ -1,5 +1,4 @@
 from time import sleep, strftime
-#from Client.__init__ import Snapchat
 import Client
 from snap import Snap
 from constants import DEFAULT_TIMEOUT
@@ -11,7 +10,6 @@ class Snapchat(object):
 
         self.client = Client.Snapchat()
         info = self.client.login(username, password)
-        print(info)
         if self.client.username is None and self.client.auth_token is None:
             self.log('Login failed, %s - %s' % (info['status'], info['message']))
             raise SystemExit(1)
@@ -99,10 +97,8 @@ class Snapchat(object):
             snap.upload(self)
 
         self.log("Status: sending snap to story, id: %s." % snap.snap_id)
-        response = self.client.send_to_story(snap)
-
         try:
-            snap.story_id = response['json']['story']['id']
+            snap.story_id = self.client.send_to_story(snap)['json']['story']['id']
         except:
             pass
 

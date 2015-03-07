@@ -387,9 +387,9 @@ class Snapchat(object):
         """
         Sends a snap to your story.
         The snap needs to be uploaded first as this returns a media_id that is used in this method.
-        Returns: True if successful, False if unsuccessful.
+        Returns: The story id of the snap.
         """
-        return len(self._request('bq/post_story', {
+        return self._request('bq/post_story', {
             'caption_text_display': snap.sender, 
             'story_timestamp': timestamp(),
             'media_id': snap.media_id,
@@ -399,8 +399,8 @@ class Snapchat(object):
             'my_story': 'true',
             'zipped': '0',
             'type': snap.media_type
-        }).content) == 0
-        
+        })['json']['story']['id']
+                
     def clear_feed(self):
         """
         Clears the user's feed
