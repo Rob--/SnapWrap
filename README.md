@@ -54,23 +54,13 @@ The following code will simply initiate a class with three "listener" functions 
 
 **mark_replayed**: (bool) mark snaps as have being replayed when opening them.
 
----
-
 `get_friends()` - returns a list/array of people that you've added.
-
----
 
 `get_best_friends()` - returns a list/array of your best friends.
 
----
-
 `get_added_me()` - returns a list/array of people that have added you.
 
----
-
 `get_blocked()` - returns a list/array of people you've blocked.
-
----
 
 `send_snap(snap, recipients)` - sends a snap.
 
@@ -78,27 +68,19 @@ The following code will simply initiate a class with three "listener" functions 
 
 **recipients**: either a string of the recipient or a list/array of recipients.
 
----
-
 `get_friend_stories()` - returns a dict of your friends' usernames and their stories (`{'user1' : [storyObj1, storyObj2], "user2": [storyObj1]}`).
-
----
 
 `update_privacy(friends_only=True)` - updates your privacy settings.
 
 **friends_only**: a boolean as to whether only your friends can see your story and send you snaps or whether anyone can.
----
+
 `post_story(snap)` - posts a snap to your story.
 
 **snap**: the snap object.
 
----
-
 `delete_story(snap)` - deletes a snap from your story.
 
 **snap**: the snap object.
-
----
 
 `add_friend(usrname)` - adds a user to your friends list.
 
@@ -110,21 +92,13 @@ The following code will simply initiate a class with three "listener" functions 
 
 **username**: username of the user you want to apply the action to.
 
----
-
 `logout()` - logs the account out.
 
----
-
 `clear_feed()` - clears the snap feed.
-
----
 
 `clear_conversation(username)` - clears a conversation with the given user.
 
 **username**: username of the user you want to clear the conversation with.
-
----
 
 `save_snap(snap, dir)` - saves a snap to a directory.
 
