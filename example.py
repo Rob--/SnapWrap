@@ -1,10 +1,9 @@
-from snapchat import Snapchat
-import time
+from bot import SnapchatBot
 from requests.exceptions import HTTPError, ConnectionError
 import logging
+import time
 
-class SnapchatBot(Snapchat):
-    
+class CustomBot(SnapchatBot):
     def on_snap(self, sender, snap):
         self.post_story(snap)
         
@@ -18,8 +17,10 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 
 while True:
     try:
-        bot = SnapchatBot(*["user", "pass"])
-        bot.begin()
-    except (HTTPError, ConnectionError) as e:
-        time.sleep(180)
-    
+        try:
+            bot = CustomBot(*["ghcollege", "garthhillcollege1"])
+            bot.listen()
+        except (HTTPError, ConnectionError) as e:
+            time.sleep(180)
+    except Exception:
+        print(Exception.message)
