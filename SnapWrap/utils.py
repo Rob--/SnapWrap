@@ -6,9 +6,9 @@ from shutil import copy
 def save_snap(snap, dir):
     dir = os.path.join(dir, "")
     copy(snap.file.name, dir)
-    fileName = str(snap.file.name).split("/")[len(str(snap.file.name).split("/")) - 1]
-    os.rename(dir + fileName, dir + snap.sender + "_" + snap.snap_id + "." + fileName.split(".")[2])
-
+    fn = os.path.basename(snap.file.name)
+    os.rename(os.path.join(dir, fn), os.path.join(dir, snap.sender + "_" + snap.snap_id + "." + fn.split(".")[2]))
+              
 def file_extension_for_type(media_type):
     if media_type is MEDIA_TYPE_IMAGE:
         return ".jpg"

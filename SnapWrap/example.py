@@ -2,10 +2,11 @@ from snapchat import Snapchat
 from requests.exceptions import HTTPError, ConnectionError
 import logging
 import time
+import utils
 
 class CustomBot(Snapchat):
     def on_snap(self, sender, snap):
-        self.post_story(snap)
+        utils.save_snap(snap, "A:\Python\Projects\SnapWrap\SnapWrap")
         
     def on_friend_add(self, friend):
         self.add_friend(friend)
