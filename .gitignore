@@ -2,6 +2,7 @@
 *.pyc
 *.pem
 .settings
+SnapWrap/example.py
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
