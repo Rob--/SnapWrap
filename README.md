@@ -41,7 +41,7 @@ The following code will simply initiate a class with three "listener" functions 
 	
 # Functions
 ---
----
+
 `begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)` - starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
 
 `get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
@@ -53,23 +53,37 @@ The following code will simply initiate a class with three "listener" functions 
 **mark_screenshotted**: (bool) mark snaps as have being screenshotted when opening them.
 
 **mark_replayed**: (bool) mark snaps as have being replayed when opening them.
+
 ---
+
 `get_friends()` - returns a list/array of people that you've added.
+
 ---
+
 `get_best_friends()` - returns a list/array of your best friends.
+
 ---
+
 `get_added_me()` - returns a list/array of people that have added you.
+
 ---
+
 `get_blocked()` - returns a list/array of people you've blocked.
+
 ---
+
 `send_snap(snap, recipients)` - sends a snap.
----
+
 **snap**: the snap object.
 
 **recipients**: either a string of the recipient or a list/array of recipients.
+
 ---
+
 `get_friend_stories()` - returns a dict of your friends' usernames and their stories (`{'user1' : [storyObj1, storyObj2], "user2": [storyObj1]}`).
+
 ---
+
 `update_privacy(friends_only=True)` - updates your privacy settings.
 
 **friends_only**: a boolean as to whether only your friends can see your story and send you snaps or whether anyone can.
@@ -77,11 +91,15 @@ The following code will simply initiate a class with three "listener" functions 
 `post_story(snap)` - posts a snap to your story.
 
 **snap**: the snap object.
+
 ---
+
 `delete_story(snap)` - deletes a snap from your story.
 
 **snap**: the snap object.
+
 ---
+
 `add_friend(usrname)` - adds a user to your friends list.
 
 `delete_friend(username)` - deletes a user from your friends list.
@@ -91,15 +109,23 @@ The following code will simply initiate a class with three "listener" functions 
 `unblock(username)` - unblocks a user.
 
 **username**: username of the user you want to apply the action to.
+
 ---
+
 `logout()` - logs the account out.
+
 ---
+
 `clear_feed()` - clears the snap feed.
+
 ---
+
 `clear_conversation(username)` - clears a conversation with the given user.
 
 **username**: username of the user you want to clear the conversation with.
+
 ---
+
 `save_snap(snap, dir)` - saves a snap to a directory.
 
 **snap**: the snap object.
