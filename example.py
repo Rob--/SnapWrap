@@ -6,7 +6,7 @@ import utils
 
 class CustomBot(Snapchat):
     def on_snap(self, sender, snap):
-        utils.save_snap(snap, "A:\Python\Projects\SnapWrap\SnapWrap")
+        self.save_snap(snap, "C:\Snapchat\Snaps")
         
     def on_friend_add(self, friend):
         self.add_friend(friend)
@@ -16,12 +16,5 @@ class CustomBot(Snapchat):
 
 logging.getLogger("requests").setLevel(logging.WARNING)
 
-while True:
-    try:
-        try:
-            bot = CustomBot(*["user", "pass"])
-            bot.begin()
-        except (HTTPError, ConnectionError) as e:
-            time.sleep(180)
-    except Exception:
-        print(Exception.message)
+bot = CustomBot(*["user", "pass"])
+bot.begin()

@@ -1,6 +1,7 @@
 from time import sleep, strftime
 import Client
 from snap import Snap
+from utils import save_snap
 from constants import DEFAULT_TIMEOUT
 
 class Snapchat(object):
@@ -125,7 +126,10 @@ class Snapchat(object):
     
     def clear_conversation(self, username):
         return self.client.clear_conversation(username)
-
+    
+    def save_snap(self, snap, dir):
+        save_snap(snap, dir)
+        
     def get_snaps(self, mark_viewed=True, mark_screenshotted=False, mark_replayed=False):
         new_snaps = self.client.get_snaps()
         snaps = []

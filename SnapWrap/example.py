@@ -6,7 +6,7 @@ import utils
 
 class CustomBot(Snapchat):
     def on_snap(self, sender, snap):
-        utils.save_snap(snap, "A:\Python\Projects\SnapWrap\SnapWrap")
+        self.save_snap(snap, "A:\Python\Projects\SnapWrap\SnapWrap")
         
     def on_friend_add(self, friend):
         self.add_friend(friend)
