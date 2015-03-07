@@ -1,6 +1,7 @@
 import tempfile, mimetypes, datetime, subprocess, re, math, os
 from PIL import Image
-from constants import MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_WITHOUT_AUDIO, SNAP_IMAGE_DIMENSIONS
+from constants import MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_WITHOUT_AUDIO, SNAP_IMAGE_DIMENSIONS, MEDIA_TYPE_UNKNOWN
+from shutil import copy
 
 def file_extension_for_type(media_type):
     if media_type is MEDIA_TYPE_IMAGE:
@@ -11,19 +12,10 @@ def file_extension_for_type(media_type):
 def create_temporary_file(suffix):
     return tempfile.NamedTemporaryFile(suffix=suffix, delete=False)
 
-def save_snap(snap,dir_name):
-    now = datetime.datetime.now()
-    before_folder = os.getcwd()
-    if not os.path.exists(dir_name):
-        os.makedirs(dir_name)
-    os.chdir(dir_name)
-    filename = '%s-%s-%s_%s:%s:%s_%s%s' % (now.year, now.month, now.day, now.hour, now.minute, now.second, snap.sender, snap.file.name[-4:])
-    with open(filename, 'wb') as f:
-        data = snap.file.file.read(8192)
-        while data:
-            f.write(data)
-            data = snap.file.file.read(8192)
-    os.chdir(before_folder)
+def save_snap(snap, dir):
+    copy(snap.file.name, dir)
+    fileName = str(snap.file.name).split("\\")[len(str(snap.file.name).split("\\")) - 1]
+    os.rename(dir + fileName, dir + snap.sender + "_" + snap.snap_id + "." + fileName.split(".")[2])
 
 def is_video_file(path):
     return mimetypes.guess_type(path)[0].startswith("video")

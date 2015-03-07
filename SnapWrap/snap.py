@@ -70,8 +70,7 @@ class Snap(object):
                 self.file.flush()
 
             else:
-                image = Image.open(StringIO(opts['data']))
-                resize_image(image, self.file.name)
+                resize_image(Image.open(StringIO(opts['data'])), self.file.name)
 
         else:
             path = opts['path']

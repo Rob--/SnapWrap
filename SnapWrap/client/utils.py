@@ -20,36 +20,29 @@ BLOB_ENCRYPTION_KEY = 'M02cnQ51Ji97vwT4'
 HASH_PATTERN = ('00011101111011100011110101011110'
                 '11010001001110011000110001000110')
 
-
 def make_request_token(a, b):
     hash_a = sha256(SECRET + a.encode('utf-8')).hexdigest()
     hash_b = sha256(b.encode('utf-8') + SECRET).hexdigest()
     return ''.join((hash_b[i] if c == '1' else hash_a[i]
                     for i, c in enumerate(HASH_PATTERN)))
-
-
+    
 def get_token(auth_token=None):
     return STATIC_TOKEN if auth_token is None else auth_token
-
 
 def pkcs5_pad(data, blocksize=16):
     pad_count = blocksize - len(data) % blocksize
     return data + (chr(pad_count) * pad_count).encode('utf-8')
 
-
 def decrypt(data):
     cipher = AES.new(BLOB_ENCRYPTION_KEY, AES.MODE_ECB)
     return cipher.decrypt(pkcs5_pad(data))
-
 
 def decrypt_story(data, key, iv):
     cipher = AES.new(key, AES.MODE_CBC, iv)
     return cipher.decrypt(pkcs5_pad(data))
 
-
 def encrypt(data):
-    cipher = AES.new(BLOB_ENCRYPTION_KEY, AES.MODE_ECB)
-    return cipher.encrypt(pkcs5_pad(data))
+    return AES.new(BLOB_ENCRYPTION_KEY, AES.MODE_ECB).encrypt(pkcs5_pad(data))
 
 def timestamp():
     return int(round(time() * 1000))

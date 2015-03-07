@@ -1,2 +1,2 @@
 from snap import Snap
-from bot import SnapchatBot
+from snapchat import Snapchat
