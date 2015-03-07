@@ -1,8 +1,5 @@
 from snapchat import Snapchat
-from requests.exceptions import HTTPError, ConnectionError
 import logging
-import time
-import utils
 
 class CustomBot(Snapchat):
     def on_snap(self, sender, snap):
@@ -12,9 +9,9 @@ class CustomBot(Snapchat):
         self.add_friend(friend)
 
     def on_friend_delete(self, friend):
-        self.delete_friend(friend)
+        self.delete_friend(frie
 
-logging.getLogger("requests").setLevel(logging.WARNING)
+logging.getLogger("requests").setLevel(logging.WARNING))
 
 bot = CustomBot(*["user", "pass"])
 bot.begin()
