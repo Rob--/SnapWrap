@@ -1,6 +1,7 @@
 ### Misc ###
 *.pyc
 *.pem
+.settings
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
