@@ -5,10 +5,7 @@ from utils import save_snap
 from constants import DEFAULT_TIMEOUT
 
 class Snapchat(object):
-    def __init__(self, username, password, **kwargs):
-        self.client = Client.Snapchat()
-        self.client.register("aadfksofkdofka", "wokwofoads33k", "1996-01-01", "asdadaodj0s.adjasd@gmail.com")
-        
+    def __init__(self, username, password, **kwargs):        
         self.username = username
         self.password = password
 

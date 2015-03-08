@@ -5,7 +5,7 @@ import os.path
 from time import time
 from datetime import date
 
-from utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
+from Client.utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
 
 MEDIA_IMAGE = 0
 MEDIA_VIDEO = 1
