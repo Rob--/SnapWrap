@@ -3,8 +3,9 @@
 import json
 import os.path
 from time import time
+from datetime import date
 
-from Client.utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
+from utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
 
 MEDIA_IMAGE = 0
 MEDIA_VIDEO = 1
@@ -67,7 +68,56 @@ class Snapchat(object):
     def _reset(self):
         self.username = None
         self.auth_token = None
-    
+        
+    def register(self, username, password, birthday, email):
+        """
+        Registers a Snapchat account.
+        Returns: response identical to the one recieved when logging in if successful,
+                 response from the request (includes a message/status) if unsuccessful.
+        
+        :param username: the username you wish to register.
+        :param password: the password.
+        :param birthday: the birthday. Needs to be in the format (string) 'YYYY-MM-DD', e.g. 1995-01-01. 
+        :param email: the email address tied to the account.
+        """
+        result = self._request('loq/register', { 
+            'age': date.today().year - int(birthday.split("-")[0]),
+            'birthday': birthday,
+            'dsig': 'd56e1a29cdcd6b0924cf',
+            'dtoken1i': self._request('loq/device_id', {}).json()["dtoken1i"],
+            'email': email,
+            'password': password      
+        }).json()
+        
+        if result['logged'] is False:
+            if 'status' in result:
+                print("Register failed, %s - %s" % (result['status'], result['message']))
+            else:
+                print("Register failed, %s" % (result['message']))
+            return result
+        
+        if 'auth_token' in result:
+            self.auth_token = result['auth_token']
+        
+        result = self._request('loq/register_username', { 
+            'username': email,
+            'selected_username' : username        
+        }).json()
+        
+        if 'logged' in result:
+            if result['logged'] is False:
+                if 'status' in result:
+                    print("Register failed, %s - %s" % (result['status'], result['message']))
+                else:
+                    print("Register failed, %s" % (result['message']))
+                return result
+        
+        if 'auth_token' in result['updates_response']:
+            self.auth_token = result['updates_response']['auth_token']
+        if 'username' in result['updates_response']:
+            self.username = result['updates_response']['username']
+        return result
+        
     def login(self, username, password):
         self._reset()
         result = self._request('loq/login', {                    
