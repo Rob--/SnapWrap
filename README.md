@@ -17,7 +17,6 @@ This library does slightly differ to agermanidis' apart from the endpoints. I've
 `python setup.py install`
 
 # Usage
----
 
 The following code will simply initiate a class with three "listener" functions that are called appropriately after you call the `begin()` method. The library is being imported, logging in with the given credentials and then running a constant loop that will check for new updates (snap, friends, etc).
 
