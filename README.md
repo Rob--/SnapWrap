@@ -42,9 +42,13 @@ The following code will simply initiate a class with three "listener" functions 
 # Functions
 ---
 
-`begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)` - starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
+`begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)`
 
-`get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
+- starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
+
+`get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)`
+
+- retrieves all new snaps. Parameters are optional.
 
 `get_friends()` - returns a list/array of people that you've added.
 
