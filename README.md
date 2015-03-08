@@ -42,45 +42,33 @@ The following code will simply initiate a class with three "listener" functions 
 # Functions
 ---
 
-`begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)`
+#### Core Functions
 
-- starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
+`begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)` - starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
 
-`get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)`
+`get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
 
-- retrieves all new snaps. Parameters are optional.
+#### Snap Functions
 
-`get_friends()`
+`send_snap(snap, recipients)` - sends a snap. Recipients can either be a string or a list.
 
-- returns a list/array of people that you've added.
-
-`get_best_friends()`
-
-- returns a list/array of your best friends.
-
-`get_added_me()`
-
-- returns a list/array of people that have added you.
-
-`get_blocked()`
-
-- returns a list/array of people you've blocked.
-
-`send_snap(snap, recipients)`
-
-- sends a snap. Recipients can either be a string or a list.
-
-`get_friend_stories()`
-
-- returns a dict of your friends' usernames and their stories (`{'user1' : [storyObj1, storyObj2], "user2": [storyObj1]}`).
-
-`update_privacy(friends_only)`
-
-- updates your privacy settings. If `friends_only` is true, only friends can send you snaps/see your story. If it's false, anyone can.
+`save_snap(snap, dir)` - saves a snap to a given directory.
 
 `post_story(snap)` - posts a snap to your story.
 
 `delete_story(snap)` - deletes a snap from your story.
+
+`get_friend_stories()` - returns a dict of your friends' usernames and their stories (`{'user1' : [storyObj1, storyObj2], "user2": [storyObj1]}`).
+
+#### Friends
+
+`get_friends()` - returns a list/array of people that you've added.
+
+`get_best_friends()` - returns a list/array of your best friends.
+
+`get_added_me()` - returns a list/array of people that have added you.
+
+`get_blocked()` - returns a list/array of people you've blocked.
 
 `add_friend(usrname)` - adds a user to your friends list.
 
@@ -90,13 +78,12 @@ The following code will simply initiate a class with three "listener" functions 
 
 `unblock(username)` - unblocks a user.
 
+#### Misc
+
+`update_privacy(friends_only)` - updates your privacy settings. If `friends_only` is true, only friends can send you snaps/see your story. If it's false, anyone can.
+
 `logout()` - logs the account out.
 
 `clear_feed()` - clears the snap feed.
 
 `clear_conversation(username)`- clears a conversation with the given user.
-
-`save_snap(snap, dir)`
-
-- saves a snap to a directory.
----
