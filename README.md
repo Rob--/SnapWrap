@@ -13,9 +13,8 @@ This library does slightly differ to agermanidis' apart from the endpoints. I've
 
 ---
 # Installation
----
 
-`python setup.py install`
+###`python setup.py install`
 
 ---
 
