@@ -9,7 +9,7 @@ class CustomBot(Snapchat):
         self.add_friend(friend)
 
     def on_friend_delete(self, friend):
-        self.delete_friend(frie
+        self.delete_friend(friend)
 
 logging.getLogger("requests").setLevel(logging.WARNING))
 

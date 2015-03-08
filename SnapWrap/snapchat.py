@@ -74,7 +74,7 @@ class Snapchat(object):
     def get_blocked(self):
         return self.client.get_blocked()
 
-    def send_snap(self, recipients, snap):
+    def send_snap(self, snap, recipients):
         if not snap.uploaded:
             self.log("Status: uploading, id: %s." % snap.snap_id)
             snap.upload(self)
@@ -128,6 +128,7 @@ class Snapchat(object):
         return self.client.clear_conversation(username)
     
     def save_snap(self, snap, dir):
+        self.log("Saving %s to %s..." % (snap.snap_id, dir))
         save_snap(snap, dir)
         
     def get_snaps(self, mark_viewed=True, mark_screenshotted=False, mark_replayed=False):
