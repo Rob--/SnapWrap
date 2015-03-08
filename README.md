@@ -14,9 +14,7 @@ This library does slightly differ to agermanidis' apart from the endpoints. I've
 ---
 # Installation
 
-###`python setup.py install`
-
----
+`python setup.py install`
 
 # Usage
 ---
@@ -39,7 +37,6 @@ The following code will simply initiate a class with three "listener" functions 
 	bot.begin()
 	
 # Functions
----
 
 #### Core Functions
 
