@@ -1,5 +1,5 @@
 from time import sleep, strftime
-import Client
+from SnapWrap import Client
 from snap import Snap
 from utils import save_snap
 from constants import DEFAULT_TIMEOUT

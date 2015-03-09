@@ -5,7 +5,6 @@ import os.path
 from time import time
 from datetime import date
 from SnapWrap.Client.utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
-
 MEDIA_IMAGE = 0
 MEDIA_VIDEO = 1
 MEDIA_VIDEO_NOAUDIO = 2
@@ -424,12 +423,15 @@ class Snapchat(object):
         The snap needs to be uploaded first as this returns a media_id that is used in this method.
         Returns: True if successful, False if unsuccessful.
         """
-        return len(self._request('loq/send', {
-            'username': self.username,
+        if type(recipients) is not list:
+            recipients = [recipients]
+            
+        return len(self._request('loq/send', {                
             'media_id': media_id,
-            'recipient': recipients,
-            'time': time,
-            'zipped': '0'
+            'time': int(time),
+            'username': self.username,
+            'zipped': 0,
+            'recipients': recipients,
         }).content) == 0
 
     def send_to_story(self, snap):
