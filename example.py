@@ -1,4 +1,4 @@
-from snapchat import Snapchat
+from SnapWrap import Snapchat
 import logging
 
 class CustomBot(Snapchat):
