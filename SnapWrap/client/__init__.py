@@ -5,6 +5,7 @@ import os.path
 from time import time
 from datetime import date
 from SnapWrap.Client.utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
+
 MEDIA_IMAGE = 0
 MEDIA_VIDEO = 1
 MEDIA_VIDEO_NOAUDIO = 2
@@ -14,7 +15,6 @@ FRIEND_UNCONFIRMED = 1
 FRIEND_BLOCKED = 2
 PRIVACY_EVERYONE = 0
 PRIVACY_FRIENDS = 1
-
 
 def is_video(data):
     return len(data) > 1 and data[0:2] == b'\x00\x00'

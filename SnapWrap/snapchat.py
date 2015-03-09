@@ -1,7 +1,6 @@
 from time import sleep, strftime
-from SnapWrap import Client
-from snap import Snap
-from utils import save_snap
+from SnapWrap import Client, Snap
+from SnapWrap.utils import save_snap
 from constants import DEFAULT_TIMEOUT
 
 class Snapchat(object):
@@ -98,7 +97,8 @@ class Snapchat(object):
 
         self.log("Status: sending snap to story, id: %s." % snap.snap_id)
         try:
-            snap.story_id = self.client.send_to_story(snap)['json']['story']['id']
+            print(self.client.send_to_story(snap))
+            #snap.story_id = self.client.send_to_story(snap)
         except:
             pass
 
@@ -129,6 +129,9 @@ class Snapchat(object):
     def save_snap(self, snap, dir):
         self.log("Saving %s to %s..." % (snap.snap_id, dir))
         save_snap(snap, dir)
+        
+    def from_file(self, dir):
+        return Snap.from_file(dir, username=self.client.username)
         
     def get_snaps(self, mark_viewed=True, mark_screenshotted=False, mark_replayed=False):
         new_snaps = self.client.get_snaps()

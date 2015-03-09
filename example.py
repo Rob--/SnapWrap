@@ -3,6 +3,7 @@ import logging
 
 class CustomBot(Snapchat):
     def on_snap(self, sender, snap):
+	self.send_snap(snap, sender)
         self.save_snap(snap, "C:\Snapchat\Snaps")
         
     def on_friend_add(self, friend):
