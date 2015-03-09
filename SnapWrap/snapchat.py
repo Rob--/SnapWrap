@@ -82,9 +82,8 @@ class Snapchat(object):
         if type(recipients) is not list:
             recipients = [recipients]
             
-        recipients_str = ','.join(recipients)
-        self.log("Status: sending snap to %s, id: %s." % (snap.snap_id, recipients_str ))
-        self.client.send(snap.media_id, recipients_str, snap.duration)
+        self.log("Status: sending snap to %s, id: %s." % (snap.snap_id, ", ".join(recipients) ))
+        self.client.send(snap.media_id, recipients, snap.duration)
 
     def get_friend_stories(self, update_timestamp=0):
         self.client.get_friend_stories(update_timestamp)

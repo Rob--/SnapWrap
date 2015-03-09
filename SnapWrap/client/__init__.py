@@ -422,10 +422,7 @@ class Snapchat(object):
         Sends a snap.
         The snap needs to be uploaded first as this returns a media_id that is used in this method.
         Returns: True if successful, False if unsuccessful.
-        """
-        if type(recipients) is not list:
-            recipients = [recipients]
-            
+        """            
         return len(self._request('loq/send', {                
             'media_id': media_id,
             'time': int(time),
