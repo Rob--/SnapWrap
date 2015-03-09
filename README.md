@@ -34,7 +34,11 @@ The following code will simply initiate a class with three "listener" functions 
 	
 	bot = CustomBot(*["user", "pass"])
 	bot.begin()
-	
+
+# Disclosure
+
+[http://rob--.github.io/](http://rob--.github.io/)
+
 # Functions
 
 #### Core Functions
