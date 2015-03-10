@@ -5,16 +5,8 @@ import os.path
 from time import time
 from datetime import date
 from SnapWrap.Client.utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
-
-MEDIA_IMAGE = 0
-MEDIA_VIDEO = 1
-MEDIA_VIDEO_NOAUDIO = 2
-
-FRIEND_CONFIRMED = 0
-FRIEND_UNCONFIRMED = 1
-FRIEND_BLOCKED = 2
-PRIVACY_EVERYONE = 0
-PRIVACY_FRIENDS = 1
+from SnapWrap.constants import (DEFAULT_DURATION, MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_NO_AUDIO, MEDIA_TYPE_IMAGE,
+                                PRIVACY_FRIENDS, PRIVACY_EVERYONE, FRIEND_BLOCKED)
 
 def is_video(data):
     return len(data) > 1 and data[0:2] == b'\x00\x00'
@@ -29,17 +21,17 @@ def is_zip(data):
 
 
 def get_file_extension(media_type):
-    if media_type in (MEDIA_VIDEO, MEDIA_VIDEO_NOAUDIO):
+    if media_type in (MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_NO_AUDIO):
         return 'mp4'
-    if media_type == MEDIA_IMAGE:
+    if media_type == MEDIA_TYPE_IMAGE:
         return 'jpg'
     return ''
 
 def get_media_type(data):
     if is_video(data):
-        return MEDIA_VIDEO
+        return MEDIA_TYPE_VIDEO
     if is_image(data):
-        return MEDIA_IMAGE
+        return MEDIA_TYPE_IMAGE
     return None
 
 def _map_keys(snap):
@@ -417,18 +409,18 @@ class Snapchat(object):
         }, files={'data': encrypt(data)})
         return media_id if len(r.content) == 0 else None
 
-    def send(self, media_id, recipients, time=5):
+    def send(self, media_id, recipients, duration=DEFAULT_DURATION):
         """
         Sends a snap.
         The snap needs to be uploaded first as this returns a media_id that is used in this method.
         Returns: True if successful, False if unsuccessful.
-        """            
+        """
         return len(self._request('loq/send', {                
             'media_id': media_id,
-            'time': int(time),
+            'time': int(duration),
             'username': self.username,
             'zipped': 0,
-            'recipients': recipients,
+            'recipients': json.dumps(recipients),
         }).content) == 0
 
     def send_to_story(self, snap):

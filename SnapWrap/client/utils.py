@@ -69,8 +69,7 @@ def request(endpoint, auth_token, data=None, files=None,
     if req_type == 'post':
         data.update({
             'timestamp': now,
-            'req_token': make_request_token(auth_token or STATIC_TOKEN,
-                                            str(now)),
+            'req_token': make_request_token(auth_token or STATIC_TOKEN, str(now)),
         })
         r = requests.post(URL + endpoint, data=data, files=files,
                           headers=headers, verify=False)

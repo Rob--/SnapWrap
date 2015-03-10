@@ -81,7 +81,16 @@ class Snapchat(object):
         if type(recipients) is not list:
             recipients = [recipients]
             
-        self.log("Status: sending snap to %s, id: %s." % (snap.snap_id, ", ".join(recipients) ))
+        str = "["
+        for r in recipients:
+            if (recipients.index(r) is len(recipients) - 1):
+                str += ("'%s'" % r) 
+            else :
+                str += ("'%s'," % r)
+        str += "]"
+        print(str)
+        
+        self.log("Status: sending snap to %s, id: %s." % (", ".join(recipients), snap.snap_id))
         self.client.send(snap.media_id, recipients, snap.duration)
 
     def get_friend_stories(self, update_timestamp=0):

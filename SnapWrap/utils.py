@@ -1,6 +1,6 @@
 import tempfile, mimetypes, datetime, subprocess, re, math, os
 from PIL import Image
-from constants import MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_WITHOUT_AUDIO, SNAP_IMAGE_DIMENSIONS, MEDIA_TYPE_UNKNOWN
+from constants import MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO, SNAP_IMAGE_DIMENSIONS, MEDIA_TYPE_UNKNOWN
 from shutil import copy
 
 def save_snap(snap, dir):
