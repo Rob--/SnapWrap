@@ -69,7 +69,7 @@ The following code will simply initiate a class with three "listener" functions 
 
 `get_blocked()` - returns a list/array of people you've blocked.
 
-`add_friend(usrname)` - adds a user to your friends list.
+`add_friend(username)` - adds a user to your friends list.
 
 `delete_friend(username)` - deletes a user from your friends list.
 
@@ -83,7 +83,7 @@ The following code will simply initiate a class with three "listener" functions 
 
 `logout()` - logs the account out.
 
-`from_file()` - upload the snap from a file.
+`from_file(dir)` - upload the snap from a file, e.g. `self.from_file("C:\image.jpg")`.
 
 `clear_feed()` - clears the snap feed.
 
