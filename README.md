@@ -45,7 +45,9 @@ The following code will simply initiate a class with three "listener" functions 
 
 `begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)` - starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
 
-`get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
+`get_snaps(mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
+
+`register(username, password, birthday, email)` - registers an account with the corresponding information. Birthdays need to be in the format 'YYYY-MM-DD'.
 
 #### Snap Functions
 
