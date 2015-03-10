@@ -83,6 +83,8 @@ The following code will simply initiate a class with three "listener" functions 
 
 `logout()` - logs the account out.
 
+`from_file()` - upload the snap from a file.
+
 `clear_feed()` - clears the snap feed.
 
 `clear_conversation(username)`- clears a conversation with the given user.
