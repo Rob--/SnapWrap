@@ -89,6 +89,15 @@ class Snapchat(object):
         
     def update_privacy(self, friends_only=False):
         return self.client.update_privacy(friends_only)
+    
+    def update_story_privacy(self, friends_only=False):
+        return self.client.update_story_privacy(friends_only)
+    
+    def update_birthday(self, birthday):
+        return self.client.update_birthday(birthday)
+    
+    def update_email(self, email):
+        return self.client.update_email(email)
         
     def post_story(self, snap):
         if not snap.uploaded:

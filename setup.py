@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='SnapWrap',
-    version='0.1',
+    version='0.2',
     description="Wrapper for Snapchat's API!",
     long_description="This is an API wrapper for Snapchat's unofficial and undocumented API.",
     author='Robert',

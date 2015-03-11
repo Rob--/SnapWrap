@@ -299,7 +299,7 @@ class Snapchat(object):
 
     def update_privacy(self, friends_only):
         """
-        Change privacy settings (from whom can you receive snaps from, whom can you share stories to).
+        Change privacy settings (from whom can you receive snaps from).
         Returns: True if successful, False if unsuccessful.
 
         :param friends_only: True is friends only, False if everyone.
@@ -309,6 +309,45 @@ class Snapchat(object):
             'action': 'updatePrivacy',
             'privacySetting': PRIVACY_FRIENDS if friends_only else PRIVACY_EVERYONE
         }).json()['param'] == str(PRIVACY_FRIENDS if friends_only else PRIVACY_EVERYONE)
+        
+    def update_story_privacy(self, friends_only):
+        """
+        Change story privacy settings (from whom can you receive snaps from).
+        Returns: True if successful, False if unsuccessful.
+
+        :param friends_only: True is friends only, False if everyone.
+        """
+        return self._request('ph/settings', {
+            'username': self.username,
+            'action': 'updateStoryPrivacy',
+            'privacySetting': "FRIENDS" if friends_only else "EVERYONE"
+        }).json()['param'] == str("FRIENDS" if friends_only else "EVERYONE")
+        
+    def update_birthday(self, birthday):
+        """
+        Change your birthday.
+        Returns: True if successful, False if unsuccessful.
+
+        :param birthday: the birthday, needs to be in the format "MM-DD".
+        """
+        return self._request('ph/settings', {
+            'username': self.username,
+            'action': 'updateBirthday',
+            'birthday': birthday
+        }).json()["logged"]
+        
+    def update_email(self, email):
+        """
+        Change your email.
+        Returns: True if successful, False if unsuccessful.
+
+        :param email: the email address.
+        """
+        return self._request('ph/settings', {
+            'username': self.username,
+            'action': 'updateEmail',
+            'email': email
+        }).json()["logged"]
 
     def get_friends(self):
         """
