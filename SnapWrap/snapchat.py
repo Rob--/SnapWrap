@@ -136,11 +136,15 @@ class Snapchat(object):
         return self.client.clear_conversation(username)
     
     def save_snap(self, snap, dir):
-        self.log("Saving %s to %s..." % (snap.snap_id, dir))
+        self.log("Saving snap to '%s', id: %s." % (dir, snap.snap_id))
         save_snap(snap, dir)
         
     def from_file(self, dir):
         return Snap.from_file(dir, username=self.client.username)
+    
+    def register(self, username, password="password", birthday="1997-01-01", email):
+        self.log("Registering account %s, password: %s, birthday: %s, email: %s..." % (username, password, birthday, email))
+        return self.client.register(username, password=password, birthday=birthday, email)
         
     def get_snaps(self, mark_viewed=True, mark_screenshotted=False, mark_replayed=False):
         new_snaps = self.client.get_snaps()
