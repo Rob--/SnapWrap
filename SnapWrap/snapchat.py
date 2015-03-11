@@ -80,15 +80,6 @@ class Snapchat(object):
 
         if type(recipients) is not list:
             recipients = [recipients]
-            
-        str = "["
-        for r in recipients:
-            if (recipients.index(r) is len(recipients) - 1):
-                str += ("'%s'" % r) 
-            else :
-                str += ("'%s'," % r)
-        str += "]"
-        print(str)
         
         self.log("Status: sending snap to %s, id: %s." % (", ".join(recipients), snap.snap_id))
         self.client.send(snap.media_id, recipients, snap.duration)
@@ -141,9 +132,9 @@ class Snapchat(object):
     def from_file(self, dir):
         return Snap.from_file(dir, username=self.client.username)
     
-    def register(self, username, password="password", birthday="1997-01-01", email):
+    def register(self, username, password, birthday, email):
         self.log("Registering account %s, password: %s, birthday: %s, email: %s..." % (username, password, birthday, email))
-        return self.client.register(username, password=password, birthday=birthday, email)
+        return self.client.register(username, password, birthday, email)
         
     def get_snaps(self, mark_viewed=True, mark_screenshotted=False, mark_replayed=False):
         new_snaps = self.client.get_snaps()
