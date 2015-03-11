@@ -106,8 +106,7 @@ class Snapchat(object):
 
         self.log("Status: sending snap to story, id: %s." % snap.snap_id)
         try:
-            print(self.client.send_to_story(snap))
-            #snap.story_id = self.client.send_to_story(snap)
+            snap.story_id = self.client.send_to_story(snap)
         except:
             pass
 
