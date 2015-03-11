@@ -45,7 +45,9 @@ The following code will simply initiate a class with three "listener" functions 
 
 `begin(timeout, mark_viewed, mark_screenshotted, mark_replayed)` - starts a permanent cycle (with a delay on each iteration) of looking for new snaps and checking for newly added/deleted users. Parameters are optional.
 
-`get_snaps(self, mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
+`get_snaps(mark_viewed, mark_screenshotted, mark_replayed)` - retrieves all new snaps. Parameters are optional.
+
+`register(username, password, birthday, email)` - registers an account with the corresponding information. Birthdays need to be in the format 'YYYY-MM-DD'.
 
 #### Snap Functions
 
@@ -69,7 +71,7 @@ The following code will simply initiate a class with three "listener" functions 
 
 `get_blocked()` - returns a list/array of people you've blocked.
 
-`add_friend(usrname)` - adds a user to your friends list.
+`add_friend(username)` - adds a user to your friends list.
 
 `delete_friend(username)` - deletes a user from your friends list.
 
@@ -83,7 +85,7 @@ The following code will simply initiate a class with three "listener" functions 
 
 `logout()` - logs the account out.
 
-`from_file()` - upload the snap from a file.
+`from_file(dir)` - upload the snap from a file, e.g. `self.from_file("C:\image.jpg")`.
 
 `clear_feed()` - clears the snap feed.
 

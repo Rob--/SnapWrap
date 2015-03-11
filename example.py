@@ -8,6 +8,7 @@ class CustomBot(Snapchat):
         
     def on_friend_add(self, friend):
         self.add_friend(friend)
+        self.send_snap(self.from_file("C:\Snapchat\welcome.jpg", friend))
 
     def on_friend_delete(self, friend):
         self.delete_friend(friend)
