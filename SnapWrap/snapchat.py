@@ -98,6 +98,9 @@ class Snapchat(object):
     
     def update_email(self, email):
         return self.client.update_email(email)
+    
+    def update_number_of_best_friends(self, number):
+        return self.client.update_number_of_best_friends(number)
         
     def post_story(self, snap):
         if not snap.uploaded:

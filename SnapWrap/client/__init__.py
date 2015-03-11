@@ -348,6 +348,18 @@ class Snapchat(object):
             'action': 'updateEmail',
             'email': email
         }).json()["logged"]
+        
+    def update_number_of_best_friends(self, number):
+        """
+        Change the number of best friends to be displayed.
+        Returns: True if successful, False if unsuccessful.
+
+        :param number: the number of best friends to be displayed.
+        """
+        return self._request('bq/set_num_best_friends', {
+            'username': self.username,
+            'num_best_friends': number
+        }).json()["logged"]
 
     def get_friends(self):
         """
