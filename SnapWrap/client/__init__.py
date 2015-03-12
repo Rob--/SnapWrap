@@ -128,7 +128,7 @@ class Snapchat(object):
                     'app': 'com.snapchat.android',
                     'User-Agent': 'Android-GCM/1.4 (mako JDQ39)',
                     'Authorization' : 'AidLogin 4002600885140111980:7856388705669173275'
-                }, verify=False).content
+                }).content
             ).replace("token=", ""),
             'retry': '0',
             'dtoken1i': self._request('loq/device_id', {}).json()["dtoken1i"],

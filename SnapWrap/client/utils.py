@@ -61,8 +61,7 @@ def request(endpoint, auth_token, data=None, files=None,
     if data is None:
         data = {}
     headers = {
-        'User-Agent': 'Snapchat/8.1.1 (iPhone5,1; iOS 6.1.4; gzip)',
-        #'User-Agent': 'Snapchat/9.2.0.0 (Nexus 5; Android 5.0.1#1602158#21; gzip)',
+        'User-Agent': 'Snapchat/9.2.0.0 (Nexus 5; Android 5.0.1#1602158#21; gzip)',
         'Accept-Language': 'en-US;q=1, en;q=0.9',
         'Accept-Locale': 'en'
     }
@@ -71,8 +70,7 @@ def request(endpoint, auth_token, data=None, files=None,
             'timestamp': now,
             'req_token': make_request_token(auth_token or STATIC_TOKEN, str(now)),
         })
-        r = requests.post(URL + endpoint, data=data, files=files,
-                          headers=headers, verify=False)
+        r = requests.post(URL + endpoint, data=data, files=files, headers=headers, verify=False)
     else:
         r = requests.get(URL + endpoint, params=data, headers=headers)
     if raise_for_status:
