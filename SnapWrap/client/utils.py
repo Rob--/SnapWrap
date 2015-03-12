@@ -49,17 +49,16 @@ def timestamp():
 
 def request(endpoint, auth_token, data=None, files=None,
             raise_for_status=True, req_type='post'):
-    """Wrapper method for calling Snapchat API which adds the required auth
-    token before sending the request.
+    """
+    Method to send the request to Snapchat's API.
+    Automatically adds two common fields: `req_token` and `timestamp`.
 
-    :param endpoint: URL for API endpoint
-    :param data: Dictionary containing form data
-    :param raise_for_status: Raise exception for 4xx and 5xx status codes
-    :param req_type: The request type (GET, POST). Defaults to POST
+    :param endpoint: the api endpoint.
+    :param data: dict containing data
+    :param raise_for_status: aise exception for 4xx and 5xx status codes
+    :param req_type: the request type ('GET', 'POST'), default is 'POST'.
     """
     now = timestamp()
-    if data is None:
-        data = {}
     headers = {
         'User-Agent': 'Snapchat/9.2.0.0 (Nexus 5; Android 5.0.1#1602158#21; gzip)',
         'Accept-Language': 'en-US;q=1, en;q=0.9',
@@ -70,14 +69,13 @@ def request(endpoint, auth_token, data=None, files=None,
             'timestamp': now,
             'req_token': make_request_token(auth_token or STATIC_TOKEN, str(now)),
         })
-        r = requests.post(URL + endpoint, data=data, files=files, headers=headers, verify=False)
+        r = requests.post(URL + endpoint, data=data if data is not None else {}, files=files, headers=headers)
     else:
-        r = requests.get(URL + endpoint, params=data, headers=headers)
+        r = requests.get(URL + endpoint, params=data if data is not None else {}, headers=headers)
     if raise_for_status:
         r.raise_for_status()
     return r
 
 def make_media_id(username):
     """Create a unique media identifier. Used when uploading media"""
-    return '{username}~{uuid}'.format(username=username.upper(),
-                                      uuid=str(uuid4()))
+    return '{username}~{uuid}'.format(username=username.upper(), uuid=str(uuid4()))
