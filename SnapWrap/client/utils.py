@@ -60,7 +60,8 @@ def request(endpoint, auth_token, data=None, files=None,
     """
     now = timestamp()
     headers = {
-        'User-Agent': 'Snapchat/9.2.0.0 (Nexus 5; Android 5.0.1#1602158#21; gzip)',
+        #'User-Agent': 'Snapchat/9.2.0.0 (Nexus 5; Android 5.0.1#1602158#21; gzip)',
+        'User-Agent': 'Snapchat/8.1.1 (iPhone5,1; iOS 6.1.4; gzip)',
         'Accept-Language': 'en-US;q=1, en;q=0.9',
         'Accept-Locale': 'en'
     }

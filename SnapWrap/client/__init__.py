@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 
-import json
-import os.path
+import json, os.path
 from time import time
 from datetime import date
 from SnapWrap.Client.utils import (encrypt, decrypt, decrypt_story, make_media_id, request, timestamp, requests)
-from SnapWrap.constants import (DEFAULT_DURATION, MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_NO_AUDIO, MEDIA_TYPE_IMAGE,
-                                PRIVACY_FRIENDS, PRIVACY_EVERYONE, FRIEND_BLOCKED)
-
+from SnapWrap.constants import (DEFAULT_DURATION, MEDIA_TYPE_VIDEO, MEDIA_TYPE_VIDEO_NO_AUDIO, MEDIA_TYPE_IMAGE, PRIVACY_FRIENDS, PRIVACY_EVERYONE, FRIEND_BLOCKED)
+ 
 def is_video(data):
     return len(data) > 1 and data[0:2] == b'\x00\x00'
 
@@ -110,25 +108,28 @@ class Snapchat(object):
         
     def login(self, username, password):
         self._reset()
+        import pdb
+        pdb.set_trace()
         result = self._request('loq/login', {                    
             'username': username,
             'password': password,
             'ptoken': str(requests.post(
-                "https://android.clients.google.com/c2dm/register3",
-                data={
-                    'X-GOOG.USER_AID':'4002600885140111980',
-                    'app':'com.snapchat.android',
-                    'sender':'191410808405',
-                    'cert':'49f6badb81d89a9e38d65de76f09355071bd67e7',  
-                    'device':'4002600885140111980',
-                    'app_ver':'508',
-                    'info':'',
-                },
-                headers={
-                    'app': 'com.snapchat.android',
-                    'User-Agent': 'Android-GCM/1.4 (mako JDQ39)',
-                    'Authorization' : 'AidLogin 4002600885140111980:7856388705669173275'
-                }).content
+                    "https://android.clients.google.com/c2dm/register3",
+                    data={
+                        'X-GOOG.USER_AID':'4002600885140111980',
+                        'app':'com.snapchat.android',
+                        'sender':'191410808405',
+                        'cert':'49f6badb81d89a9e38d65de76f09355071bd67e7',  
+                        'device':'4002600885140111980',
+                        'app_ver':'508',
+                        'info':'',
+                    },
+                    headers={
+                        'app': 'com.snapchat.android',
+                        'User-Agent': 'Android-GCM/1.4 (mako JDQ39)',
+                        'Authorization' : 'AidLogin 4002600885140111980:7856388705669173275'
+                    }
+                ).content
             ).replace("token=", ""),
             'retry': '0',
             'dtoken1i': self._request('loq/device_id', {}).json()["dtoken1i"],

@@ -7,7 +7,8 @@ class Snapchat(object):
     def __init__(self, username, password, **kwargs):        
         self.username = username
         self.password = password
-
+        import pdb
+        pdb.set_trace()
         self.client = Client.Snapchat()
         info = self.client.login(username, password)
         if self.client.username is None and self.client.auth_token is None:
