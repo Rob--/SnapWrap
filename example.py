@@ -1,5 +1,4 @@
 from SnapWrap import Snapchat
-import logging
 
 class CustomBot(Snapchat):
     def on_snap(self, sender, snap):
@@ -12,8 +11,6 @@ class CustomBot(Snapchat):
 
     def on_friend_delete(self, friend):
         self.delete_friend(friend)
-
-logging.getLogger("requests").setLevel(logging.WARNING)
 
 bot = CustomBot(*["user", "pass"])
 bot.begin()
