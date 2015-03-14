@@ -70,7 +70,7 @@ def request(endpoint, auth_token, data=None, files=None,
             'timestamp': now,
             'req_token': make_request_token(auth_token or STATIC_TOKEN, str(now)),
         })
-        r = requests.post(URL + endpoint, data=data if data is not None else {}, files=files, headers=headers)
+        r = requests.post(URL + endpoint, data=data if data is not None else {}, files=files, headers=headers, verify=False)
     else:
         r = requests.get(URL + endpoint, params=data if data is not None else {}, headers=headers)
     if raise_for_status:
